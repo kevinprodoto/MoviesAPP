@@ -9,18 +9,24 @@ export default class MovieList extends Component {
     moviesServices = new MoviesServices();
     
     state = {
-        movies: []
+        movies: [],
+        loading: true
+    }
+
+    onError = () => {
+
     }
 
     render() {
-        const {movies} = this.state;
+        const {movies, loading} = this.state;
         this.moviesServices.getAllMovies().then((res) => {
             this.setState(() => {
                 return {
                     movies: res.results,
+                    loading: false,
                 }
             })
-        })
+        }).catch(this.onError);
         return <section className="movies">
                     {movies.map(item => <Movie
                                         key={item.id}
@@ -29,7 +35,8 @@ export default class MovieList extends Component {
                                         rating={item.vote_average}
                                         image={`https://image.tmdb.org/t/p/w200/${item.poster_path}?api_key=9ae97e145cfa535e840476b073e34378`}
                                         date={item.release_date}
-                                        style={item.genre_ids}/>)}
+                                        style={item.genre_ids}
+                                        loading={loading}/>)}
                </section>
     }
 }

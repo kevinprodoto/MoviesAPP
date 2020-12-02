@@ -3,11 +3,15 @@ body {
     padding: 0 !important;
     background-color: #E5E5E5 !important;
 }
+.todoapp {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+}
 .movies {
-    width: 1050px;
+    width: 1010px;
     margin: auto;
-    padding: 19px 40px;
-    padding-left: 30px;
+    padding: 19px 0px 19px 30px;
     display: flex;
     flex-wrap: wrap;
     background-color: #FFFFFF;
@@ -30,6 +34,8 @@ body {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+    padding-top: 12px;
+    padding-right: 20px;
 }
 .movieName {
     font-family: Inter;
@@ -37,6 +43,7 @@ body {
     font-weight: normal;
     font-size: 20px;
     line-height: 28px;
+    margin-bottom: 10px;
 }
 .movieDate {
     font-family: Inter;
@@ -44,8 +51,8 @@ body {
     font-weight: normal;
     font-size: 12px;
     line-height: 15px;
-    color: rgba(0, 0, 0, 0.65);
-    
+    color: #827E7E;
+    margin-bottom: 10px;
 }
 .movieStyles {
     padding: 2px 4px;
@@ -58,4 +65,15 @@ body {
     font-size: 12px;
     line-height: 15px;
     color: rgba(0, 0, 0, 0.65);
+    margin-bottom: 10px;
+}
+.appFooter {
+    margin: auto;
+    background-color: #FFFFFF;
+}
+.ant-pagination-item-active {
+    background-color: #1890FF !important;
+}
+.ant-pagination-item-active a {
+    color: #FFFFFF !important;
 }

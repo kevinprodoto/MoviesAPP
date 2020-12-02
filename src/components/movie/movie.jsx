@@ -2,14 +2,22 @@ import React from "react";
 
 import PropTypes from 'prop-types';
 
-const Movie = ({name, description, image, date, id}) => {
+import {format} from "date-fns";
+
+import Spinner from "../spinner/index"
+
+const Movie = ({name, description, image, date, id, loading}) => {
+
+        if (loading) {
+          return <Spinner />;
+        }
         return <div className="movieContainer" id ={id}>
             <div className="imageContainer"><img alt="" src={image} /></div>
             <div className="description">
                 <div><p className="movieName">{name}</p></div>
-                <time className="movieDate" dateTime={date}>{date}</time>
-                <p className="movieStyles"><p>Action</p></p>
-                <p className="movieOverview">{description}</p>
+                <time className="movieDate" dateTime={date}>{format(new Date(date), "PP")}</time>
+                <p className="movieStyles">Action</p>
+                <p className="movieOverview">{description.length > 150 ? `${description.slice(0, 150)}...` : description}</p>
             </div>
         </div>
 }
@@ -19,6 +27,7 @@ Movie.defaultProps = {
     image: () => {},
     date: () => {},
     id: 0,
+    loading: true,
   }
 
   Movie.propTypes = {
@@ -27,6 +36,7 @@ Movie.defaultProps = {
     description: PropTypes.string,
     image: PropTypes.string,
     date: PropTypes.string,
+    loading: PropTypes.bool,
   }
 
 

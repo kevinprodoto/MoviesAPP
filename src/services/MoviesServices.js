@@ -1,4 +1,10 @@
+import AppFooter from "../components/footer/index"
+
 export default class MoviesServices {
+    state = {
+        cuurentPage: AppFooter.defaultCurrent
+    }
+
     reqObj = {
         api_key: "9ae97e145cfa535e840476b073e34378",
         query: "return",
