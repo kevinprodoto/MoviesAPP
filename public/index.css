@@ -77,3 +77,14 @@ body {
 .ant-pagination-item-active a {
     color: #FFFFFF !important;
 }
+@media (max-width: 1010px) {
+
+  .movies {
+    width: 100%;
+    flex-wrap: nowrap;
+    flex-direction: column;
+  }
+  .movieContainer {
+    margin: auto;
+  }
+}
