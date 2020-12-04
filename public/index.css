@@ -4,13 +4,15 @@ body {
     background-color: #E5E5E5 !important;
 }
 .todoapp {
+    width: 1010px;
     display: flex;
     flex-wrap: wrap;
     flex-direction: column;
+    margin: auto;
 }
 .movies {
-    width: 1010px;
-    margin: auto;
+
+    
     padding: 19px 0px 19px 30px;
     display: flex;
     flex-wrap: wrap;
@@ -78,13 +80,16 @@ body {
     color: #FFFFFF !important;
 }
 @media (max-width: 1010px) {
-
-  .movies {
-    width: 100%;
-    flex-wrap: nowrap;
-    flex-direction: column;
-  }
-  .movieContainer {
-    margin: auto;
+    .todoapp {
+        width: 100%;
+    }
+    .movies {
+        width: 100%;
+        flex-wrap: nowrap;
+        flex-direction: column;
+    }
+    .movieContainer{
+        margin: 20px 17px;
+        width: 100%;
   }
 }

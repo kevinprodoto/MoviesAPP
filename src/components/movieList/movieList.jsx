@@ -1,32 +1,23 @@
 import React, {Component} from "react";
 
-import MoviesServices from "../../services/MoviesServices";
+import PropTypes from 'prop-types';
 
 import  Movie from "../movie/index";
 
 export default class MovieList extends Component {
 
-    moviesServices = new MoviesServices();
-    
-    state = {
-        movies: [],
-        loading: true
+    componentDidMount() {
+        const {updateMovies} = this.props;
+        updateMovies();
     }
 
     onError = () => {
-
+        return <p>Это не те дроиды, которых ты ищешь!</p>
     }
-
+    
     render() {
-        const {movies, loading} = this.state;
-        this.moviesServices.getAllMovies().then((res) => {
-            this.setState(() => {
-                return {
-                    movies: res.results,
-                    loading: false,
-                }
-            })
-        }).catch(this.onError);
+        const {movies, loading} = this.props;
+
         return <section className="movies">
                     {movies.map(item => <Movie
                                         key={item.id}
@@ -39,4 +30,16 @@ export default class MovieList extends Component {
                                         loading={loading}/>)}
                </section>
     }
+}
+
+MovieList.defaultProps = {
+    movies: [],
+    loading: true,
+    updateMovies: () => {},
+}
+  
+MovieList.propTypes = {
+movies: PropTypes.number,
+loading: PropTypes.bool,
+updateMovies: PropTypes.number,
 }
