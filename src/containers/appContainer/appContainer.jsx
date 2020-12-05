@@ -17,8 +17,6 @@ export default class AppContainer extends Component {
                 label: evv.target.label
             }
         })
-        const {label} = this.state;
-        console.log(label);
     }
 
     updateMovies = (pageNumber, query) => {

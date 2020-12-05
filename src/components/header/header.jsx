@@ -1,14 +1,12 @@
 import React, {Component} from "react";
 
-import { debounce } from "lodash";
-
 import PropTypes from 'prop-types';
 
 export default class AppHeader extends Component {
 
     onLabelChange = (evv) => {
         const {updateMovies} = this.props;
-        debounce(updateMovies(1, evv.target.value), 1000, {'maxWait': 1000})
+        updateMovies(1, evv.target.value)
     }
 
     render() {
