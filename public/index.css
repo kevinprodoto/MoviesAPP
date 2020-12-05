@@ -9,14 +9,50 @@ body {
     flex-wrap: wrap;
     flex-direction: column;
     margin: auto;
+    background-color: #FFFFFF;
 }
-.movies {
+.appHeader {
+    background-color: #FFFFFF;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.findMovie {
+    height: 40px;
+    width: 943px;
+    font-size: 16px;
+    padding: 9px 12px;
+    outline: none;
+    border-color: rgba(0, 0, 0, 0.25);
+    border-radius: 4px;
+}
+.findMovie::placeholder {
+    color: rgba(0, 0, 0, 0.25);
+}
+.buttons {
+    width: 120px;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    margin-top: 13px;
+    height: 54px;
+}
+.buttons button {
+    padding: 0px 6px;
+    background-color: #FFFFFF;
+    border: 2px solid #FFFFFF;
+    color: rgba(0, 0, 0, 0.65);
+    outline: none;
+}
+.buttons button:hover {
+    border-bottom: 2px solid #1890FF;
+    color: #1890FF;
+}
 
-    
+.movies {
     padding: 19px 0px 19px 30px;
     display: flex;
     flex-wrap: wrap;
-    background-color: #FFFFFF;
 }
 .movieContainer {
     width: 454px;
@@ -37,7 +73,13 @@ body {
     flex-direction: column;
     align-items: flex-start;
     padding-top: 12px;
-    padding-right: 20px;
+    padding-right: 9px;
+}
+.description__block {
+    width: 100%;
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
 }
 .movieName {
     font-family: Inter;
@@ -46,6 +88,31 @@ body {
     font-size: 20px;
     line-height: 28px;
     margin-bottom: 10px;
+    max-width: 170px;
+}
+.movieRating {
+    border: 2px solid #E90000;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    font-size: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #E90000;
+    font-weight: bold;
+}
+.colorOrange {
+    border-color: #E97E00;
+    color: #E97E00;
+}
+.colorYellow {
+    border-color: #E9D100;
+    color: #E9D100;
+}
+.colorGreen {
+    border-color: #66E900;
+    color: #66E900;
 }
 .movieDate {
     font-family: Inter;
@@ -69,6 +136,15 @@ body {
     color: rgba(0, 0, 0, 0.65);
     margin-bottom: 10px;
 }
+.movieOverview {
+    padding-right: 11px;
+}
+.Rate {
+    width: 100%;
+}
+.ant-rate-star:not(:last-child) {
+    margin-right: 2px !important;
+}
 .appFooter {
     margin: auto;
     background-color: #FFFFFF;
@@ -78,6 +154,13 @@ body {
 }
 .ant-pagination-item-active a {
     color: #FFFFFF !important;
+}
+.Rate {
+    margin-top: auto !important;
+    margin-bottom: 10px !important;
+}
+.ant-select {
+    display: none !important;
 }
 @media (max-width: 1010px) {
     .todoapp {

@@ -21,6 +21,7 @@ export default class MovieList extends Component {
         return <section className="movies">
                     {movies.map(item => <Movie
                                         key={item.id}
+                                        id={item.id}
                                         name={item.title} 
                                         description={item.overview}
                                         rating={item.vote_average}
@@ -33,7 +34,7 @@ export default class MovieList extends Component {
 }
 
 MovieList.defaultProps = {
-    movies: [],
+    movies: 0,
     loading: true,
     updateMovies: () => {},
 }

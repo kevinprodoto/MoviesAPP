@@ -8,10 +8,21 @@ export default class AppContainer extends Component {
     state= {
         loading: true,
         movies: [],
+        label: "",
     }
 
-    updateMovies = (pageNumber) => {
-        const moviesServices = new MoviesServices(pageNumber);
+    onLabelChange = (evv) => {
+        this.setState(() => {
+            return {
+                label: evv.target.label
+            }
+        })
+        const {label} = this.state;
+        console.log(label);
+    }
+
+    updateMovies = (pageNumber, query) => {
+        const moviesServices = new MoviesServices(pageNumber, query);
         moviesServices.getAllMovies().then((res) => {
             this.setState(() => {
                 return {
@@ -29,11 +40,12 @@ export default class AppContainer extends Component {
     }
 
     render() {
-        const { movies, loading} = this.state;
+        const { movies, loading, label} = this.state;
         return <App movies= {movies} 
-                    loading = {loading} 
-                    onChange = {this.onChange}
-                    updateMovies = {this.updateMovies}/>
+                    loading = {loading}
+                    updateMovies = {this.updateMovies}
+                    onChange = {this.onLabelChange}
+                    label = {label}/>
     }
         
 }

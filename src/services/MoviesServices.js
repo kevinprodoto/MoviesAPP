@@ -1,8 +1,9 @@
 import AppFooter from "../components/footer/index"
 
 export default class MoviesServices {
-    constructor(page = 1) {
+    constructor(page = 1, query = "return") {
         this.page = page;
+        this.query = query;
     }
 
     state = {
@@ -11,7 +12,6 @@ export default class MoviesServices {
 
     reqObj = {
         api_key: "9ae97e145cfa535e840476b073e34378",
-        query: "return",
         mode: "no-cors",
         language: "en-US",
         page: 2,
@@ -21,8 +21,10 @@ export default class MoviesServices {
     apiBase = "https://api.themoviedb.org"
 
     async getResource(url) {
-        const res = await fetch(`${this.apiBase}${url}?api_key=${this.reqObj.api_key}&language=en-US&query=return&include_adult=false&page=${this.page}`);
+        console.log(`${this.apiBase}${url}?api_key=${this.reqObj.api_key}&query=${this.query}&page=${this.page}`)
+        const res = await fetch(`${this.apiBase}${url}?api_key=${this.reqObj.api_key}&query=${this.query}&page=${this.page}`);
         const body = await res.json();
+        console.log(body)
         return body;
     }
 
