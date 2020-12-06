@@ -37,5 +37,5 @@ AppHeader.defaultProps = {
   }
   
   AppHeader.propTypes = {
-    updateMovies: PropTypes.string,
+    updateMovies: PropTypes.func,
   }

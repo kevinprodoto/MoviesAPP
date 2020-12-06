@@ -6,7 +6,9 @@ import {Rate} from "antd"
 
 import {format} from "date-fns";
 
-const Movie = ({name, description, image, date, id, rating}) => {
+import {GenresConsumer} from "../genresContext/index";
+
+const Movie = ({name, description, image, date, id, rating, style}) => {
 
         let Class = "movieRating";
         if (rating >= 3 && rating < 5) {
@@ -25,7 +27,17 @@ const Movie = ({name, description, image, date, id, rating}) => {
                   <span className={Class}>{rating}</span>
                 </div>
                 <time className="movieDate" dateTime={date}>{format(new Date(date), "PP")}</time>
-                <p className="movieStyles">Action</p>
+                <GenresConsumer>
+                  {
+                    (genres) => {
+                      return( 
+                        <div className="movieStyles">
+                          {style.map(item => <p key = {item}>{genres[item]}</p>)}
+                        </div>
+                      )
+                    }
+                  }
+                </GenresConsumer>
                 <p className="movieOverview">{description.length > 120 ? `${description.slice(0, 120)}...` : description}</p>
                 <Rate count={10} className="Rate" />
             </div>
@@ -38,6 +50,7 @@ Movie.defaultProps = {
     date: () => {},
     id: 0,
     rating: 10,
+    style: [],
   }
 
   Movie.propTypes = {
@@ -47,6 +60,7 @@ Movie.defaultProps = {
     image: PropTypes.string,
     date: PropTypes.string,
     rating: PropTypes.number,
+    style: PropTypes.instanceOf(Array),
   }
 
 

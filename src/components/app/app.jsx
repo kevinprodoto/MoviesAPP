@@ -11,13 +11,13 @@ import AppFooter from "../footer/index"
 const App = ({movies, loading, updateMovies, onChange, label, page, totalResults}) => {
   return <section className ="todoapp">
     <AppHeader onChange = {onChange} updateMovies = {updateMovies}/>
-    <MovieList totalResults = {totalResults} updateMovies = {updateMovies} movies = {movies} loading = {loading} />
+    <MovieList totalResults = {totalResults} updateMovies = {updateMovies} movies = {movies} loading = {loading}/>
     <AppFooter updateMovies = {updateMovies} label = {label} page = {page}/>
   </section>
 }
 
 App.defaultProps = {
-  movies: 0,
+  movies: [],
   loading: true,
   updateMovies: () => {},
   onChange: () => {},
@@ -27,10 +27,10 @@ App.defaultProps = {
 }
 
 App.propTypes = {
-  movies: PropTypes.number,
+  movies: PropTypes.instanceOf(Array),
   loading: PropTypes.bool,
-  updateMovies: PropTypes.string,
-  onChange: PropTypes.string,
+  updateMovies: PropTypes.func,
+  onChange: PropTypes.func,
   label: PropTypes.string,
   page: PropTypes.number,
   totalResults: PropTypes.number,

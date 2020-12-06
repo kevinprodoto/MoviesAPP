@@ -41,15 +41,15 @@ export default class MovieList extends Component {
 }
 
 MovieList.defaultProps = {
-    movies: 0,
+    movies: [],
     loading: true,
     updateMovies: () => {},
     totalResults: 0,
 }
   
 MovieList.propTypes = {
-movies: PropTypes.number,
+movies: PropTypes.instanceOf(Array),
 loading: PropTypes.bool,
-updateMovies: PropTypes.number,
+updateMovies: PropTypes.func,
 totalResults: PropTypes.number,
 }

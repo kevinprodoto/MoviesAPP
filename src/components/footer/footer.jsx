@@ -26,7 +26,7 @@ AppFooter.defaultProps = {
 
 AppFooter.propTypes = {
     label: PropTypes.string,
-    updateMovies: PropTypes.number,
+    updateMovies: PropTypes.func,
     page: PropTypes.number,
 }
 export default AppFooter;

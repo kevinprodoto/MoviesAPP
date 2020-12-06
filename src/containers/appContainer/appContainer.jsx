@@ -4,11 +4,15 @@ import MoviesServices from "../../services/MoviesServices";
 
 import App from "../../components/app/index";
 
+import {genresRequest} from "../../tools/genres";
+
+import {GenresProvider} from "../../components/genresContext/index";
+
 export default class AppContainer extends Component {
     state= {
         loading: true,
         movies: [],
-        label: "",
+        label: "return",
         page: 1,
         totalResults: 0,
     }
@@ -18,6 +22,22 @@ export default class AppContainer extends Component {
             return {
                 label: str
             }
+        })
+    }
+
+    getGenres = () => {
+        genresRequest().then((res) => {
+            const genresObj = {};
+            res.genres.forEach(item => {
+                genresObj[item.id] = item.name;
+            })
+            return genresObj;
+        }).then((res) => {
+            this.setState(() => {
+                return {
+                    genres: res 
+                }
+            })
         })
     }
 
@@ -37,14 +57,18 @@ export default class AppContainer extends Component {
     }
 
     render() {
-        const { movies, loading, label, page, totalResults} = this.state;
-        return <App movies= {movies} 
-                    loading = {loading}
-                    updateMovies = {this.updateMovies}
-                    onChange = {this.onLabelChange}
-                    label = {label}
-                    page = {page}
-                    totalResults = {totalResults}/>
+        const { movies, loading, label, page, totalResults, genres} = this.state;
+        this.getGenres();
+        return <GenresProvider value={genres}>
+            <App 
+                movies= {movies} 
+                loading = {loading}
+                updateMovies = {this.updateMovies}
+                onChange = {this.onLabelChange}
+                label = {label}
+                page = {page}
+                totalResults = {totalResults}/>
+        </GenresProvider>
     }
         
 }
