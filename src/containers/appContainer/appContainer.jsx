@@ -4,7 +4,7 @@ import MoviesServices from "../../services/MoviesServices";
 
 import App from "../../components/app/index";
 
-import {genresRequest} from "../../tools/genres";
+import genresRequest from "../../tools/genres";
 
 import {GenresProvider} from "../../components/genresContext/index";
 
