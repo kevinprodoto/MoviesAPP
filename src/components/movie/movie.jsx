@@ -6,9 +6,7 @@ import {Rate} from "antd"
 
 import {format} from "date-fns";
 
-import Spinner from "../spinner/index"
-
-const Movie = ({name, description, image, date, id, loading, rating}) => {
+const Movie = ({name, description, image, date, id, rating}) => {
 
         let Class = "movieRating";
         if (rating >= 3 && rating < 5) {
@@ -19,9 +17,6 @@ const Movie = ({name, description, image, date, id, loading, rating}) => {
           Class += " colorGreen";
         }
 
-        if (loading) {
-          return <Spinner />;
-        }
         return <div className="movieContainer" id ={id}>
             <div className="imageContainer"><img alt="" src={image} /></div>
             <div className="description">
@@ -42,7 +37,6 @@ Movie.defaultProps = {
     image: () => {},
     date: () => {},
     id: 0,
-    loading: true,
     rating: 10,
   }
 
@@ -52,7 +46,6 @@ Movie.defaultProps = {
     description: PropTypes.string,
     image: PropTypes.string,
     date: PropTypes.string,
-    loading: PropTypes.bool,
     rating: PropTypes.number,
   }
 

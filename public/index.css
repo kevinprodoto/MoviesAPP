@@ -3,6 +3,16 @@ body {
     padding: 0 !important;
     background-color: #E5E5E5 !important;
 }
+.ant-spin {
+    margin: 20px !important;
+}
+.noSearch {
+    margin: auto;
+    color: rgba(0, 0, 0, 0.65);
+    font-size: 20px;
+    margin-top: 15px;
+    margin-bottom: 15px; 
+}
 .todoapp {
     width: 1010px;
     display: flex;
@@ -142,13 +152,15 @@ body {
 .Rate {
     width: 100%;
 }
+.appFooter {
+    margin: auto;
+    margin-bottom: 20px;
+    background-color: #FFFFFF;
+}
 .ant-rate-star:not(:last-child) {
     margin-right: 2px !important;
 }
-.appFooter {
-    margin: auto;
-    background-color: #FFFFFF;
-}
+
 .ant-pagination-item-active {
     background-color: #1890FF !important;
 }

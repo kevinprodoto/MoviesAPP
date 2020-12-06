@@ -8,11 +8,11 @@ import MovieList from "../movieList/index"
 
 import AppFooter from "../footer/index"
 
-const App = ({movies, loading, updateMovies, onChange, label}) => {
+const App = ({movies, loading, updateMovies, onChange, label, page, totalResults}) => {
   return <section className ="todoapp">
-    <AppHeader onChange = {onChange} label = {label} updateMovies = {updateMovies}/>
-    <MovieList updateMovies = {updateMovies} movies = {movies} loading = {loading} />
-    <AppFooter updateMovies = {updateMovies} />
+    <AppHeader onChange = {onChange} updateMovies = {updateMovies}/>
+    <MovieList totalResults = {totalResults} updateMovies = {updateMovies} movies = {movies} loading = {loading} />
+    <AppFooter updateMovies = {updateMovies} label = {label} page = {page}/>
   </section>
 }
 
@@ -22,6 +22,8 @@ App.defaultProps = {
   updateMovies: () => {},
   onChange: () => {},
   label: "",
+  page: 1,
+  totalResults: 0,
 }
 
 App.propTypes = {
@@ -30,6 +32,8 @@ App.propTypes = {
   updateMovies: PropTypes.string,
   onChange: PropTypes.string,
   label: PropTypes.string,
+  page: PropTypes.number,
+  totalResults: PropTypes.number,
 }
 
 export default App;
