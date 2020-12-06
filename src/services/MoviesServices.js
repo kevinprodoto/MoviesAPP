@@ -21,10 +21,8 @@ export default class MoviesServices {
     apiBase = "https://api.themoviedb.org"
 
     async getResource(url) {
-        console.log(`${this.apiBase}${url}?api_key=${this.reqObj.api_key}&query=${this.query}&page=${this.page}`)
         const res = await fetch(`${this.apiBase}${url}?api_key=${this.reqObj.api_key}&query=${this.query}&page=${this.page}`);
         const body = await res.json();
-        console.log(body)
         return body;
     }
 
