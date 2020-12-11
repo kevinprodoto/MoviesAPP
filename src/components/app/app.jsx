@@ -8,10 +8,10 @@ import MovieList from "../movieList/index"
 
 import AppFooter from "../footer/index"
 
-const App = ({movies, loading, updateMovies, onChange, label, page, totalResults}) => {
+const App = ({guestId, notRatedMovies, ratedMovies, rated, movies, loading, updateMovies, onChange, label, page, totalResults}) => {
   return <section className ="todoapp">
-    <AppHeader onChange = {onChange} updateMovies = {updateMovies}/>
-    <MovieList totalResults = {totalResults} updateMovies = {updateMovies} movies = {movies} loading = {loading}/>
+    <AppHeader notRatedMovies = {notRatedMovies} rated = {rated} ratedMovies = {ratedMovies} onChange = {onChange} updateMovies = {updateMovies}/>
+    <MovieList guestId = {guestId} totalResults = {totalResults} updateMovies = {updateMovies} movies = {movies} loading = {loading}/>
     <AppFooter updateMovies = {updateMovies} label = {label} page = {page}/>
   </section>
 }
@@ -24,9 +24,14 @@ App.defaultProps = {
   label: "",
   page: 1,
   totalResults: 0,
+  ratedMovies: () => {},
+  rated: false,
+  notRatedMovies: () => {},
+  guestId: "",
 }
 
 App.propTypes = {
+  guestId: PropTypes.string,
   movies: PropTypes.instanceOf(Array),
   loading: PropTypes.bool,
   updateMovies: PropTypes.func,
@@ -34,6 +39,9 @@ App.propTypes = {
   label: PropTypes.string,
   page: PropTypes.number,
   totalResults: PropTypes.number,
+  ratedMovies: PropTypes.func,
+  rated: PropTypes.bool,
+  notRatedMovies: PropTypes.func,
 }
 
 export default App;

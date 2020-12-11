@@ -17,13 +17,28 @@ export default class AppHeader extends Component {
     }
 
     render() {
+        const {ratedMovies, notRatedMovies, rated} = this.props;
+        let formClass = "";
+        let searchActive = "active";
+        let ratedActive = "";
+        if (rated) {
+            formClass = "invisible";
+            searchActive = "";
+            ratedActive = "active";
+        };
+        if (!rated) {
+            formClass = "";
+            searchActive = "active";
+            ratedActive = "";
+
+        }
         return (
             <div className="appHeader">
                 <div className="buttons">
-                    <button type = "button">Search</button>
-                    <button type = "button">Rated</button>
+                    <button className = {searchActive} onClick = {() => {notRatedMovies()}} type = "button">Search</button>
+                    <button className = {ratedActive} onClick = {() => {ratedMovies()}} type = "button">Rated</button>
                 </div>
-                <form>
+                <form className = {formClass}>
                     <input onChange = {debounce(this.onLabelChange, 2000, { 'maxWait': 2000 })} 
                                       className="findMovie" 
                                       placeholder="Type to search..."></input>
@@ -34,8 +49,14 @@ export default class AppHeader extends Component {
 }
 AppHeader.defaultProps = {
     updateMovies: () => {},
+    ratedMovies: () => {},
+    notRatedMovies: () => {},
+    rated: false,
   }
   
   AppHeader.propTypes = {
     updateMovies: PropTypes.func,
+    ratedMovies: PropTypes.func,
+    notRatedMovies: PropTypes.func,
+    rated: PropTypes.bool,
   }

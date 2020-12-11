@@ -18,7 +18,7 @@ export default class MovieList extends Component {
     }
     
     render() {
-        const {movies, loading, totalResults} = this.props;
+        const {movies, loading, totalResults, guestId} = this.props;
         if (movies.length === 0 && loading) {
             return <Spin size="large" wrapperClassName="spinnerWrapper"/>
         }
@@ -28,6 +28,8 @@ export default class MovieList extends Component {
 
         return <section className="movies">
                     {movies.map(item => <Movie
+                                        raiting = {item.raiting}
+                                        guestId = {guestId}
                                         key={item.id}
                                         id={item.id}
                                         name={item.title} 
@@ -45,11 +47,13 @@ MovieList.defaultProps = {
     loading: true,
     updateMovies: () => {},
     totalResults: 0,
+    guestId: "",
 }
   
 MovieList.propTypes = {
-movies: PropTypes.instanceOf(Array),
-loading: PropTypes.bool,
-updateMovies: PropTypes.func,
-totalResults: PropTypes.number,
+    guestId: PropTypes.string,
+    movies: PropTypes.instanceOf(Array),
+    loading: PropTypes.bool,
+    updateMovies: PropTypes.func,
+    totalResults: PropTypes.number,
 }
