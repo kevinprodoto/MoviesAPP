@@ -1,5 +1,7 @@
 import React, {Component} from "react";
 
+import {Alert} from "antd";
+
 import MoviesServices from "../../services/MoviesServices";
 
 import GetRatedMovies from "../../services/GetRatedMovies";
@@ -21,6 +23,7 @@ export default class AppContainer extends Component {
         totalResults: 0,
         guestId: "asdasd",
         rated: false,
+        error: false,
     }
 
     componentDidMount() {
@@ -75,6 +78,16 @@ export default class AppContainer extends Component {
         })
     }
 
+    onError = (err) => {
+        console.log(err);
+        this.setState(() => {
+            return {
+                error: true,
+            }
+        })
+        return <Alert message="Error Text" type="error" />
+    }
+
     updateMovies = (pageNumber, query) => {
         const {rated} = this.state;
         const {guestId} = this.state;
@@ -90,7 +103,7 @@ export default class AppContainer extends Component {
                         loading: false,
                     }
                 })
-            })
+            }).catch(this.onError);
 
         } else {
             const moviesServices = new MoviesServices(pageNumber, query);
@@ -108,10 +121,15 @@ export default class AppContainer extends Component {
     }
 
     render() {
-        const { guestId, movies, loading, label, page, totalResults, genres, rated} = this.state;
+        const { error, guestId, movies, loading, label, page, totalResults, genres, rated} = this.state;
         this.getGenres();
+        if (error) {
+            console.log(error);
+            return <Alert message="Error Text" type="error" />
+        }
         return <GenresProvider value={genres}>
             <App 
+                error = {error}
                 guestId = {guestId}
                 notRatedMovies = {this.notRatedMovies}
                 rated = {rated}

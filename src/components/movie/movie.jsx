@@ -9,6 +9,15 @@ import {format} from "date-fns";
 import {GenresConsumer} from "../genresContext/index";
 
 export default class Movie extends Component {
+
+  checkImage = (imagePath) => {
+    if (imagePath === null) {
+      return "../src/images/p110213185807873.png"
+    }
+      return `https://image.tmdb.org/t/p/w200/${imagePath}?api_key=9ae97e145cfa535e840476b073e34378`
+
+  }
+
   changeRating = async (value) => {
     const {id, guestId} = this.props;
     await fetch(`https://api.themoviedb.org/3/movie/${id}/rating?api_key=9ae97e145cfa535e840476b073e34378&guest_session_id=${guestId}`, 
@@ -25,6 +34,8 @@ export default class Movie extends Component {
 
       render() {
         const {name, description, image, date, id, rating, style} = this.props;
+        let data = date;
+        if (!date) data = new Date();
         let Class = "movieRating";
         if (rating >= 3 && rating < 5) {
           Class += " colorOrange";
@@ -35,13 +46,13 @@ export default class Movie extends Component {
         }
 
         return <div className="movieContainer" id ={id}>
-            <div className="imageContainer"><img alt="" src={image} /></div>
+            <div className="imageContainer"><img alt="Здесь могла быть ваша реклама" src={this.checkImage(image)} /></div>
             <div className="description">
                 <div className="description__block">
                   <p className="movieName">{name}</p>
                   <span className={Class}>{rating}</span>
                 </div>
-                <time className="movieDate" dateTime={date}>{format(new Date(date), "PP")}</time>
+                <time className="movieDate" dateTime={data}>{format(new Date(data), "PP")}</time>
                 <GenresConsumer>
                   {
                     (genres) => {
@@ -64,7 +75,7 @@ Movie.defaultProps = {
     name: () => {},
     description: () => {},
     image: () => {},
-    date: "2020-12-12",
+    date: "",
     id: 0,
     rating: 10,
     style: [],

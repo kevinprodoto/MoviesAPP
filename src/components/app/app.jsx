@@ -8,10 +8,10 @@ import MovieList from "../movieList/index"
 
 import AppFooter from "../footer/index"
 
-const App = ({guestId, notRatedMovies, ratedMovies, rated, movies, loading, updateMovies, onChange, label, page, totalResults}) => {
+const App = ({error, guestId, notRatedMovies, ratedMovies, rated, movies, loading, updateMovies, onChange, label, page, totalResults}) => {
   return <section className ="todoapp">
     <AppHeader notRatedMovies = {notRatedMovies} rated = {rated} ratedMovies = {ratedMovies} onChange = {onChange} updateMovies = {updateMovies}/>
-    <MovieList guestId = {guestId} totalResults = {totalResults} updateMovies = {updateMovies} movies = {movies} loading = {loading}/>
+    <MovieList error = {error} guestId = {guestId} totalResults = {totalResults} updateMovies = {updateMovies} movies = {movies} loading = {loading}/>
     <AppFooter updateMovies = {updateMovies} label = {label} page = {page}/>
   </section>
 }
@@ -28,6 +28,7 @@ App.defaultProps = {
   rated: false,
   notRatedMovies: () => {},
   guestId: "",
+  error: false,
 }
 
 App.propTypes = {
@@ -42,6 +43,7 @@ App.propTypes = {
   ratedMovies: PropTypes.func,
   rated: PropTypes.bool,
   notRatedMovies: PropTypes.func,
+  error: PropTypes.bool,
 }
 
 export default App;
