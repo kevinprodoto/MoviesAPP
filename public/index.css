@@ -192,16 +192,29 @@ body {
     color: #1890FF !important;
 }
 @media (max-width: 1010px) {
+    .appHeader {
+        width: 100%;
+    }
     .todoapp {
+        padding: 17px;
+        width: 100%;
+    }
+    .appHeader form {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+    .findMovie {
         width: 100%;
     }
     .movies {
+        padding: 0;
         width: 100%;
         flex-wrap: nowrap;
         flex-direction: column;
     }
     .movieContainer{
-        margin: 20px 17px;
+        margin: 0;
         width: 100%;
+        margin-bottom: 20px;
   }
 }
