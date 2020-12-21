@@ -12,7 +12,7 @@ const App = ({error, guestId, notRatedMovies, ratedMovies, rated, movies, loadin
   return <section className ="todoapp">
     <AppHeader notRatedMovies = {notRatedMovies} rated = {rated} ratedMovies = {ratedMovies} onChange = {onChange} updateMovies = {updateMovies}/>
     <MovieList error = {error} guestId = {guestId} totalResults = {totalResults} updateMovies = {updateMovies} movies = {movies} loading = {loading}/>
-    <AppFooter updateMovies = {updateMovies} label = {label} page = {page}/>
+    <AppFooter updateMovies = {updateMovies} label = {label} page = {page} rated = {rated}/>
   </section>
 }
 

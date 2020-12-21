@@ -8,11 +8,13 @@ import {format} from "date-fns";
 
 import {GenresConsumer} from "../genresContext/index";
 
+import img from "../../images/p110213185807873.png" 
+
 export default class Movie extends Component {
 
   checkImage = (imagePath) => {
     if (imagePath === null) {
-      return "../src/images/p110213185807873.png"
+      return img;
     }
       return `https://image.tmdb.org/t/p/w200/${imagePath}?api_key=9ae97e145cfa535e840476b073e34378`
 
@@ -46,7 +48,7 @@ export default class Movie extends Component {
         }
 
         return <div className="movieContainer" id ={id}>
-            <div className="imageContainer"><img alt="Здесь могла быть ваша реклама" src={this.checkImage(image)} /></div>
+            <div className="imageContainer"><img src={this.checkImage(image)} alt="Здесь могла быть ваша реклама" /></div>
             <div className="description">
                 <div className="description__block">
                   <p className="movieName">{name}</p>

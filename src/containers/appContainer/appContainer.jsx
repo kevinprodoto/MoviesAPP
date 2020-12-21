@@ -79,13 +79,12 @@ export default class AppContainer extends Component {
     }
 
     onError = (err) => {
-        console.log(err);
         this.setState(() => {
             return {
                 error: true,
             }
         })
-        return <Alert message="Error Text" type="error" />
+        return <Alert message={err.message} type="error" />
     }
 
     updateMovies = (pageNumber, query) => {
@@ -124,7 +123,6 @@ export default class AppContainer extends Component {
         const { error, guestId, movies, loading, label, page, totalResults, genres, rated} = this.state;
         this.getGenres();
         if (error) {
-            console.log(error);
             return <Alert message="Error Text" type="error" />
         }
         return <GenresProvider value={genres}>

@@ -76,11 +76,11 @@ body {
     width: 200px;
     height: 300px;
     margin-right: 20px;
+    background-image: url("../src/images/p110213185807873.png");
 }
 .imageContainer img {
     width: 200px;
     height: 300px;
-    background-image: url("../src/images/p110213185807873.png");
 }
 .description {
     overflow: hidden;
