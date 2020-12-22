@@ -217,4 +217,14 @@ body {
         width: 100%;
         margin-bottom: 20px;
   }
+  .imageContainer {
+    width: 100px;
+    height: 150px;
+    margin-right: 20px;
+    background-image: url("../src/images/p110213185807873.png");
+}
+.imageContainer img {
+    width: 100px;
+    height: 150px;
+}
 }

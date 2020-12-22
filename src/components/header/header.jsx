@@ -39,7 +39,7 @@ export default class AppHeader extends Component {
                     <button className = {ratedActive} onClick = {() => {ratedMovies()}} type = "button">Rated</button>
                 </div>
                 <form className = {formClass}>
-                    <input onChange = {debounce(this.onLabelChange, 2000, { 'maxWait': 2000 })} 
+                    <input onChange = {debounce(this.onLabelChange, 1000, { 'maxWait': 1000 })} 
                                       className="findMovie" 
                                       placeholder="Type to search..."></input>
                 </form>
