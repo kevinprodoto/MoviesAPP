@@ -1,7 +1,5 @@
 import React, {Component} from "react";
 
-// import {Alert} from "antd";
-
 import MoviesServices from "../../services/MoviesServices";
 
 import GetRatedMovies from "../../services/GetRatedMovies";
@@ -84,8 +82,6 @@ export default class AppContainer extends Component {
                 error: err,
             }
         })
-        console.log(typeof err.message)
-        // return <Alert message={err.message} type="error" />
     }
 
     updateMovies = (pageNumber, query) => {
@@ -123,9 +119,6 @@ export default class AppContainer extends Component {
     render() {
         const { error, guestId, movies, loading, label, page, totalResults, genres, rated} = this.state;
         this.getGenres();
-        // if (error) {
-        //     return <Alert message="Error Text" type="error" />
-        // }
         return <GenresProvider value={genres}>
             <App 
                 error = {error}
