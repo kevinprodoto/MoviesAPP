@@ -26,7 +26,10 @@ export default class MovieList extends Component {
             return <p className="noSearch">The search returned no results.</p>
         }
         if (error) {
-            return <Alert message="Error Text" type="error" />
+            if (error) {
+                return <Alert className = 'alert' message="Check your network connection!" type="error" />
+            }
+
         }
         return <section className="movies">
                     {movies.map(item => <Movie

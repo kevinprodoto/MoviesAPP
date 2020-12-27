@@ -228,3 +228,9 @@ body {
     height: 150px;
 }
 }
+
+.alert {
+    width: 60%;
+    margin: 20px !important;
+    align-self: center;
+}
