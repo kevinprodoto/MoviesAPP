@@ -66,7 +66,7 @@ export default class Movie extends Component {
                     }
                   }
                 </GenresConsumer>
-                <p className="movieOverview">{description.length > 120 ? `${description.slice(0, 120)}...` : description}</p>
+                <p className="movieOverview">{description.length > 100 ? `${description.slice(0, 100)}...` : description}</p>
                 <Rate onChange = {this.changeRating} count={10} className="Rate" />
             </div>
         </div>
