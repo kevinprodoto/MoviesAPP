@@ -12,10 +12,15 @@
     "web-vitals": "^0.2.4"
   },
   "scripts": {
+    "lint": "eslint ./src --no-error-on-unmatched-pattern",
+    "lint:fix": "eslint ./src --fix --color --no-error-on-unmatched-pattern",
+    "format": "prettier --write src/",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "precommit": "lint-staged",
+    "eslint": "node_modules/.bin/eslint src/"
   },
   "eslintConfig": {
     "extends": [
@@ -51,5 +56,12 @@
     "lodash": "^4.17.20",
     "prettier": "^2.2.1",
     "prop-types": "^15.7.2"
+  },
+  "lint-staged": {
+    "*.{js, jsx}": [
+      "node_modules/.bin/eslint --max-warnings=0",
+      "prettier --write",
+      "git add"
+    ]
   }
 }
